@@ -2,7 +2,6 @@ package transform
 
 import (
 	"fmt"
-	"log/slog"
 	"strings"
 
 	dto "github.com/prometheus/client_model/go"
@@ -45,7 +44,6 @@ func PrometheusToFalcon(endpoint string, timestamp int64, step int, metricFamili
 				})
 
 			case dto.MetricType_UNTYPED:
-				slog.Debug("The prometheus metric is of type untyped", "metric", name)
 				out = append(out, falcon.Data{
 					Metric:      name,
 					Endpoint:    endpoint,
